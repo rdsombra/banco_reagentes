@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>||___Name:___|</strong>
+  <%= @reagent.name %>
+</p>
+
+<p>
+  <strong>|___Formula:___|</strong>
+  <%= @reagent.formula %>
+</p>
+
+<p>
+  <strong>|___Quantity:___||</strong>
+  <%= @reagent.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_reagent_path(@reagent) %> |
+<%= link_to 'Back', reagents_path %>
