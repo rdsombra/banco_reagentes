@@ -1,6 +1,6 @@
 class ReagentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_reagent, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
 
   # GET /reagents
   # GET /reagents.json
