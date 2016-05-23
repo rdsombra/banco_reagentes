@@ -5,7 +5,7 @@
     <% else %>
       <%= link_to "||   Cadastrar   |", new_user_registration_path %>    
       <%= link_to "|   Entrar   ||", new_user_session_path %>
-  <% end %>
+<% end %>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -53,7 +53,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">.:: Banco de Reagentes ::.</a>
-        
+
       </div>
     </div>
 
@@ -68,9 +68,9 @@
             <h3>.:: MENU ::.</h3>
             <ul class="nav nav-list">
               <li class="nav-header">.........................................................</li>
-              <li><%= link_to "Posts", "/posts"  %></li>
-              <li><%= link_to "Reagentes", "/reagents"  %></li>
-              <li><%= link_to "Link to Inventary -NOT DONE", "/path3"  %></li>
+              <li><%= link_to "Posts", posts_path  %></li>
+              <li><%= link_to "Reagentes", reagents_path  %></li>
+              <li><%= link_to "Inventário", inventories_path  %></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

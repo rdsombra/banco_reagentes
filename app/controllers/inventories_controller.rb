@@ -1,11 +1,11 @@
-class ReagentsController < ApplicationController
-  before_action :authenticate_user!
+class InventoriesController < ApplicationController
+	before_action :authenticate_user!
   before_action :set_reagent, only: [:show, :edit, :update, :destroy]
 
   # GET /reagents
   # GET /reagents.json
   def index
-    @reagents = Reagent.all
+    @reagents = current_user.reagents
   end
 
   # GET /reagents/1
@@ -30,7 +30,7 @@ class ReagentsController < ApplicationController
 
     respond_to do |format|
       if @reagent.save
-        format.html { redirect_to @reagent, notice: 'Reagent was successfully created.' }
+        format.html { redirect_to @reagent, notice: 'Reagente adicionado com sucesso.' }
         format.json { render :show, status: :created, location: @reagent }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class ReagentsController < ApplicationController
   def update
     respond_to do |format|
       if @reagent.update(reagent_params)
-        format.html { redirect_to @reagent, notice: 'Reagent was successfully updated.' }
+        format.html { redirect_to @reagent, notice: 'Reagente atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @reagent }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class ReagentsController < ApplicationController
   def destroy
     @reagent.destroy
     respond_to do |format|
-      format.html { redirect_to reagents_url, notice: 'Reagent was successfully destroyed.' }
+      format.html { redirect_to reagents_url, notice: 'Reagente removido com sucesso.' }
       format.json { head :no_content }
     end
   end
@@ -71,6 +71,8 @@ class ReagentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reagent_params
-      params.require(:reagent).permit(:name, :formula, :quantity)
+      params.require(:reagent).permit(:name, :formula)
     end
+
+
 end

@@ -1,0 +1,2 @@
+module InvetoryHelper
+end
