@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20160520193234) do
   create_table "reagents", force: :cascade do |t|
     t.string   "name"
     t.string   "formula"
-    t.string   "quantity"
+    t.float    "quantity"
     t.string   "measurement"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
