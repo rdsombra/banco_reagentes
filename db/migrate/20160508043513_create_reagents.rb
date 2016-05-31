@@ -3,7 +3,7 @@ class CreateReagents < ActiveRecord::Migration
     create_table :reagents do |t|
       t.string :name
       t.string :formula
-      t.string :quantity
+      t.float :quantity
       t.string :measurement
 
       t.timestamps null: false

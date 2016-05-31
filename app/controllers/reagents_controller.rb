@@ -5,7 +5,7 @@ class ReagentsController < ApplicationController
   # GET /reagents
   # GET /reagents.json
   def index
-    @reagents = Reagent.all
+    @reagents = current_user.reagents
   end
 
   # GET /reagents/1
@@ -15,7 +15,7 @@ class ReagentsController < ApplicationController
 
   # GET /reagents/new
   def new
-    @reagent = Reagent.new
+    @reagent = current_user.reagents.new
     #@reagent = current_user.reagents.new **TO INVENTARY**
   end
 
@@ -26,7 +26,7 @@ class ReagentsController < ApplicationController
   # POST /reagents
   # POST /reagents.json
   def create
-    @reagent = Reagent.new(reagent_params)
+    @reagent = current_user.reagents.new(reagent_params)
 
     respond_to do |format|
       if @reagent.save
@@ -66,12 +66,11 @@ class ReagentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reagent
-      @reagent = Reagent.find(params[:id])
+      @reagent = current_user.reagents.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reagent_params
-      params.require(:reagent).permit(:name, :formula)
-      #params.require(:reagent).permit(:name, :formula, :quantity)
+      params.require(:reagent).permit(:name, :formula, :quantity)
     end
 end

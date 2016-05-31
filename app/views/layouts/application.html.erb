@@ -3,7 +3,7 @@
       <%= current_user.email %>
       <%= link_to('Sair', destroy_user_session_path, :method => :delete) %>
     <% else %>
-      <%= link_to "||   Cadastrar   |", new_user_registration_path %>    
+      <%= link_to "||   Cadastrar   |", new_user_registration_path %>
       <%= link_to "|   Entrar   ||", new_user_session_path %>
 <% end %>
 <html lang="en">
@@ -69,8 +69,8 @@
             <ul class="nav nav-list">
               <li class="nav-header">.........................................................</li>
               <li><%= link_to "Posts", posts_path  %></li>
-              <li><%= link_to "Reagentes", reagents_path  %></li>
-              <li><%= link_to "Inventário", inventories_path  %></li>
+              <li><%= link_to "Reagentes", public_reagents_path  %></li>
+              <li><%= link_to "Inventário", reagents_path %></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

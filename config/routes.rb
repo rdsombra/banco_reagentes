@@ -3,16 +3,14 @@ Rails.application.routes.draw do
   devise_for :users
   resources :reagents
   resources :posts
-  resources :inventories, except: [:create, :new]
 
-  get 'inventory/new' => 'inventories#new', as: :new_inventory
-  post 'inventories' => 'inventories#create'
-
+  get "public_reagents" => "public_reagents#index", as: :public_reagents
+  get "public_reagent/:id" => "public_reagent#show", as: :public_reagent
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'reagents#index'
+  root 'public_reagents#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
