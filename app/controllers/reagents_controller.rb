@@ -71,6 +71,7 @@ class ReagentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reagent_params
-      params.require(:reagent).permit(:name, :formula, :quantity)
+      params.require(:reagent).permit(:name, :formula)
+      #params.require(:reagent).permit(:name, :formula, :quantity)
     end
 end

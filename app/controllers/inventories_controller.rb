@@ -1,78 +1,75 @@
 class InventoriesController < ApplicationController
-	before_action :authenticate_user!
-  before_action :set_reagent, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_inventory, only: [:show, :edit, :update, :destroy]
 
-  # GET /reagents
-  # GET /reagents.json
+  # GET /inventories
+  # GET /inventories.json
   def index
-    @reagents = current_user.reagents
+    @inventories = current_user.reagents
   end
 
-  # GET /reagents/1
-  # GET /reagents/1.json
+  # GET /inventories/1
+  # GET /inventories/1.json
   def show
   end
 
-  # GET /reagents/new
+  # GET /inventories/new
   def new
-    @reagent = Reagent.new
-    #@reagent = current_user.reagents.new **TO INVENTARY**
+    @inventory = current_user.reagents.new
   end
 
-  # GET /reagents/1/edit
+  # GET /inventories/1/edit
   def edit
   end
 
-  # POST /reagents
-  # POST /reagents.json
+  # POST /inventories
+  # POST /inventories.json
   def create
-    @reagent = Reagent.new(reagent_params)
+    @inventory = current_user.reagents.new(inventory_params)
 
     respond_to do |format|
-      if @reagent.save
-        format.html { redirect_to @reagent, notice: 'Reagente adicionado com sucesso.' }
-        format.json { render :show, status: :created, location: @reagent }
+      if @inventory.save
+        format.html { redirect_to @inventory, notice: 'Inventory was successfully created.' }
+        format.json { render :show, status: :created, location: @inventory }
       else
         format.html { render :new }
-        format.json { render json: @reagent.errors, status: :unprocessable_entity }
+        format.json { render json: @inventory.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /reagents/1
-  # PATCH/PUT /reagents/1.json
+  # PATCH/PUT /inventories/1
+  # PATCH/PUT /inventories/1.json
   def update
     respond_to do |format|
-      if @reagent.update(reagent_params)
-        format.html { redirect_to @reagent, notice: 'Reagente atualizado com sucesso.' }
-        format.json { render :show, status: :ok, location: @reagent }
+      if @inventory.update(inventory_params)
+        format.html { redirect_to @inventory, notice: 'Inventory was successfully updated.' }
+        format.json { render :show, status: :ok, location: @inventory }
       else
         format.html { render :edit }
-        format.json { render json: @reagent.errors, status: :unprocessable_entity }
+        format.json { render json: @inventory.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /reagents/1
-  # DELETE /reagents/1.json
+  # DELETE /inventories/1
+  # DELETE /inventories/1.json
   def destroy
-    @reagent.destroy
+    @inventory.destroy
     respond_to do |format|
-      format.html { redirect_to reagents_url, notice: 'Reagente removido com sucesso.' }
+      format.html { redirect_to inventories_url, notice: 'Inventory was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_reagent
-      @reagent = Reagent.find(params[:id])
+    def set_inventory
+      @inventory = current_user.reagents.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def reagent_params
-      params.require(:reagent).permit(:name, :formula)
+    def inventory_params
+      params.fetch(:inventory, {})
     end
-
-
 end

@@ -4,6 +4,7 @@ class CreateReagents < ActiveRecord::Migration
       t.string :name
       t.string :formula
       t.string :quantity
+      t.string :measurement
 
       t.timestamps null: false
     end
