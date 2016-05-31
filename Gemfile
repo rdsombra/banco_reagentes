@@ -7,6 +7,7 @@ gem 'devise'
 
 # bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass-extras'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
