@@ -5,7 +5,7 @@ class ReagentsController < ApplicationController
   # GET /reagents
   # GET /reagents.json
   def index
-    @reagents = current_user.reagents
+    @reagents = current_user.reagents.order(:name)
   end
 
   # GET /reagents/1
@@ -71,6 +71,6 @@ class ReagentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reagent_params
-      params.require(:reagent).permit(:name, :formula, :quantity)
+      params.require(:reagent).permit(:name, :formula, :quantity, :unit)
     end
 end
