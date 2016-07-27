@@ -5,7 +5,7 @@ class ReagentsController < ApplicationController
   # GET /reagents
   # GET /reagents.json
   def index
-    @reagents = current_user.reagents.order(:name)
+    @reagents = current_user.reagents.reorder('name ASC')
   end
 
   # GET /reagents/1

@@ -3,7 +3,7 @@ class PublicReagentsController < ApplicationController
   # GET /inventories
   # GET /inventories.json
   def index
-    @reagents = Reagent.all
+    @reagents = Reagent.all.reorder('name ASC')
   end
 
   # GET /inventories/1
